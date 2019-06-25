@@ -18,12 +18,17 @@ class EdenEvents::CLI
   end
   
   def get_user_month
-    chosen_month = gets.strip
-    # if valid_input(chosen_month, @months)
-    # end
+    chosen_month = gets.strip.to_i
+    show_events_for(chosen_month) if valid_input(chosen_month, @months)
   end 
   
   def valid_input(input, data)
     input.to_i <= data.length && input.to_i > 0
   end 
+  
+  def show_events_for(chosen_month)
+    month = @months[chosen_month - 1]
+    puts "Here are events for #{month}"
+    binding.pry
+  end
 end
