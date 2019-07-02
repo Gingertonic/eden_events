@@ -11,3 +11,8 @@ Classes
 - Event
 - CLI
 - Scraper
+- 
+
+session 3
+- get some real months
+- allow user to select 2nd month
