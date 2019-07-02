@@ -9,4 +9,9 @@ class EdenEvents::Scraper
        EdenEvents::Month.new(name)
     end 
   end 
+  
+  def self.scrape_events(month)
+      EdenEvents::Event.new("cool event", month)
+      EdenEvents::Event.new("uncool event", month)
+  end
 end 

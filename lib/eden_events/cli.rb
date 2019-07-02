@@ -35,6 +35,10 @@ class EdenEvents::CLI
   
   def show_events_for(chosen_month)
     month = @months[chosen_month - 1]
+    month.get_events
     puts "Here are events for #{month.name}"
+    month.events.each.with_index(1) do |event, idx|
+      puts "#{idx}. #{event.name}"
+    end 
   end
 end
