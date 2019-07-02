@@ -1,6 +1,13 @@
 class EdenEvents::CLI 
+  @@muted="\e[1;31m"
+  @@grn="\e[1;32m"
+  @@blu="\e[1;34m"
+  @@mag="\e[1;35m"
+  @@cyn="\e[1;36m"
+  @@white="\e[0m"
+  
   def call 
-    puts "\nWelcome to Eden!\n"
+    puts "\n#{@@grn}Welcome to Eden!#{@@white}\n"
     get_months
     list_months
     get_user_month
@@ -28,6 +35,6 @@ class EdenEvents::CLI
   
   def show_events_for(chosen_month)
     month = @months[chosen_month - 1]
-    puts "Here are events for #{month}"
+    puts "Here are events for #{month.name}"
   end
 end
