@@ -8,9 +8,14 @@ class EdenEvents::CLI
   
   def call 
     puts "\n#{@@grn}Welcome to Eden!#{@@white}\n"
-    get_months
-    list_months
-    get_user_month
+    @input = ""
+    until @input == "exit"
+      get_months
+      list_months
+      get_user_month
+      what_next
+    end 
+    goodbye
   end
   
   def get_months
@@ -40,6 +45,10 @@ class EdenEvents::CLI
     month.events.each.with_index(1) do |event, idx|
       puts "#{idx}. #{event.name}"
     end
+    get_user_event(month)
+  end
+  
+  def get_user_event(month)
     puts "Choose an event to see more details."
     input = gets.strip
     event = month.events[input.to_i - 1]
@@ -48,8 +57,16 @@ class EdenEvents::CLI
   end
   
   def show_event_details(event)
-    
     puts event.name
-    puts event.key_info
+    event.key_info.each {|i| puts "- #{i}"}
+  end 
+  
+  def what_next
+    puts "Are you done? Type 'exit' to exit or hit any key to see more events."
+    @input = gets.strip
+  end 
+  
+  def goodbye
+    puts "Enjoy Eden!"
   end 
 end

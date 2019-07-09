@@ -27,6 +27,9 @@ class EdenEvents::Scraper
     url = "https://www.edenproject.com#{event.url}"
     doc = Nokogiri::HTML(open(url))
     lis = doc.css("div.highlight_content li")
-     binding.pry
+    lis.each do |li|
+      info = li.text.strip
+      event.key_info << info
+    end 
   end 
 end 
