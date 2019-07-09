@@ -14,6 +14,11 @@ class EdenEvents::Scraper
   def self.scrape_events(month)
       url = "https://www.edenproject.com/visit/whats-on?date_filter_type=month&date_filter_month=#{month.ref}"
       doc = Nokogiri::HTML(open(url))
+      
+      events = doc.css("ul.boxes.cf li")
+      events.each do |e|
+        title = e.css("span.teaser_caption-inner").text.strip
+      end 
       # EdenEvents::Event.new("cool event", month)
       # EdenEvents::Event.new("uncool event", month)
   end
