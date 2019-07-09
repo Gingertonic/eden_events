@@ -1,9 +1,10 @@
 class EdenEvents::Month
-  attr_accessor :name, :events
+  attr_accessor :name, :ref, :events
   @@all = []
    
-  def initialize(name)
+  def initialize(name, ref)
     @name = name
+    @ref = ref
     @events = []
     save
   end 
@@ -17,7 +18,7 @@ class EdenEvents::Month
     EdenEvents::Scraper.scrape_events(self) if @events.empty?
   end
   
-  def save
+  def savegit 
     @@all << self
   end
 end 

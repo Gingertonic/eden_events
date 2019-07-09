@@ -6,12 +6,15 @@ class EdenEvents::Scraper
     
     months.each do |m|
        name = m.text
-       EdenEvents::Month.new(name)
+       ref = m.attr("value")
+       EdenEvents::Month.new(name, ref)
     end 
   end 
   
   def self.scrape_events(month)
-      EdenEvents::Event.new("cool event", month)
-      EdenEvents::Event.new("uncool event", month)
+      url = "https://www.edenproject.com/visit/whats-on?date_filter_type=month&date_filter_month=#{month.ref}"
+      doc = Nokogiri::HTML(open(url))
+      # EdenEvents::Event.new("cool event", month)
+      # EdenEvents::Event.new("uncool event", month)
   end
 end 
