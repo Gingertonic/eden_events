@@ -18,7 +18,7 @@ class EdenEvents::Month
     EdenEvents::Scraper.scrape_events(self) if @events.empty?
   end
   
-  def savegit 
+  def save
     @@all << self
   end
 end 

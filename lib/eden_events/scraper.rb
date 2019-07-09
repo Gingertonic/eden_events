@@ -18,8 +18,8 @@ class EdenEvents::Scraper
       events = doc.css("ul.boxes.cf li")
       events.each do |e|
         title = e.css("span.teaser_caption-inner").text.strip
+        url = e.css("a").attr("href").value
+        EdenEvents::Event.new(title, month, url)
       end 
-      # EdenEvents::Event.new("cool event", month)
-      # EdenEvents::Event.new("uncool event", month)
   end
 end 

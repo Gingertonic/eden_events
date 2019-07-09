@@ -37,8 +37,11 @@ class EdenEvents::CLI
     month = @months[chosen_month - 1]
     month.get_events
     puts "Here are events for #{month.name}"
+    puts "Choose an event to see more details."
     month.events.each.with_index(1) do |event, idx|
       puts "#{idx}. #{event.name}"
-    end 
+    end
+    input = gets.strip
+    
   end
 end

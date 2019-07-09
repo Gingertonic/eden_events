@@ -1,10 +1,11 @@
 class EdenEvents::Event
-  attr_accessor :name, :month, :key_info
+  attr_accessor :name, :month, :url, :key_info
   @@all = []
    
-  def initialize(name, month)
+  def initialize(name, month, url)
     @name = name
     @month = month
+    @url = url
     # notify month about the event
     add_to_month
     save
