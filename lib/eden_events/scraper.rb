@@ -22,4 +22,11 @@ class EdenEvents::Scraper
         EdenEvents::Event.new(title, month, url)
       end 
   end
+  
+  def self.scrape_key_info(event)
+    url = "https://www.edenproject.com#{event.url}"
+    doc = Nokogiri::HTML(open(url))
+    lis = doc.css("div.highlight_content li")
+     binding.pry
+  end 
 end 

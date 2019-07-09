@@ -6,6 +6,7 @@ class EdenEvents::Event
     @name = name
     @month = month
     @url = url
+    @key_info = []
     # notify month about the event
     add_to_month
     save
@@ -17,6 +18,10 @@ class EdenEvents::Event
   
   def add_to_month
     @month.events << self unless @month.events.include?(self)
+  end 
+  
+  def get_event_details
+    EdenEvents::Scraper.scrape_key_info(self) if @key_info.empty?
   end 
   
   def save
